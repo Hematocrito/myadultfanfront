@@ -1,0 +1,27 @@
+.content :global {
+    @media (min-width: 425px) {
+      .xdf {
+        padding-left: 4rem;
+        padding-right: 4rem;
+      }
+    }
+    @media (min-width: 475px) {
+      .xdf {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+    @media (min-width: 500px) {
+      .xdf {
+        padding-left: 6rem;
+        padding-right: 6rem;
+      }
+    }
+    @media (min-width: 540px) {
+      .xdf {
+        padding-left: 7rem;
+        padding-right: 7rem;
+      }
+    }
+  }
+  
