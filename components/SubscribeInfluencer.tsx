@@ -68,32 +68,32 @@ export default function SubscribeInfluencer() {
         </button>
       </div>
     </div>
-    <div className="grid grid-cols-2 md:grid-cols-4 md:mx-[10%] gap-1 mx-4 my-8 justify-items-center">
-      <div className="relative w-full md:w-64 h-52 md:h-48 mb-2 md:mb-0">
+    <div className="flex items-stretch gap-1 md:gap-5 md:mx-[10%] mb-4 md:mb-8 ">
+      <div className="relative w-28 md:w-64 h-32 md:h-48 mb-2 md:mb-0">
         <Image
           src={Model}
-          className={`object-cover rounded-xl`}
+          className={`object-cover`}
           layout="fill"
         />
       </div>
-      <div className="relative w-full md:w-64 h-52 md:h-48 mb-2 md:mb-0">
+      <div className="relative w-28 md:w-64 h-32 md:h-48 mb-2 md:mb-0">
         <Image
           src={Model}
-          className={`object-cover rounded-xl`}
+          className={`object-cover`}
           layout="fill"
         />
       </div>
-      <div className="relative w-full md:w-64 h-52 md:h-48 mb-2 md:mb-0">
+      <div className="relative w-28 md:w-64 h-32 md:h-48 mb-2 md:mb-0">
         <Image
           src={Model}
-          className={`object-cover rounded-xl`}
+          className={`object-cover`}
           layout="fill"
         />
       </div>
-      <div className="relative w-full md:w-64 h-52 md:h-48 mb-2 md:mb-0">
+      <div className="relative w-28 md:w-64 h-32 md:h-48 mb-2 md:mb-0">
         <Image
           src={Model}
-          className={`object-cover rounded-xl`}
+          className={`object-cover`}
           layout="fill"
         />
       </div>

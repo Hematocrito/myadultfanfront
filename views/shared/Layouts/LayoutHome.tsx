@@ -90,22 +90,8 @@ const LayoutHome = ({filter,setFilter,getFiles, children, files }: LayoutHomePro
             {/* <Select name="male" formGroup={FormGroup}>
               {['', '', ['Sort', 'Latest', 'Oldes', 'Most Popular']]}
             </Select> */}
-          </div>
-          <div className="mx-[17%] md:mx-0">
-            <div className="grid grid-cols-3 gap-2 mx-3 mt-8 mb-5">              
-                <button className="bg-blue-450 text-white font-medium  rounded-lg my-3 px-5 py-2 text-sm md:text-base">
-                  Male
-                </button>
-                <button className="bg-slate-100 text-black font-medium  rounded-lg my-3 px-5 py-2 text-sm md:text-base">
-                  Female
-                </button>
-                <button className="bg-slate-100 text-black font-medium  rounded-lg my-3 px-5 py-2 text-sm md:text-base">
-                  Trans
-                </button>
-            </div>
-          </div>
-          
-          <div className="flex justify-around">
+          </div>          
+          <div className="flex justify-around mt-10">
             {/* <Button width="100px" type=''>Reset</Button> */}
             <button type="button" className="bg-slate-100 font-medium  rounded-lg my-2 px-8 py-2 text-sm md:text-base" onClick={()=>reset()}>
               Reset

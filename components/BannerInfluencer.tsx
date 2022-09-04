@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from "next/router";
 
+
 export default function BannerInfluencer({ influencer }: any) {
   function openModal(modalId: any) {
     let modal: any = document.getElementById(modalId);
@@ -41,7 +42,7 @@ export default function BannerInfluencer({ influencer }: any) {
 
 
   return (
-    <div className="relative h-56 lg:h-[70vh] w-full md:w-4/6 ml-0 md:ml-56 mt-1">
+    <div className="relative h-56 lg:h-[70vh] w-full md:w-[80%] md:mx-[10%] mt-1">
       <Image src={influencer} layout="fill" className="object-fill" />
       <div className="absolute w-full top-1">
         <div className="flex justify-around">

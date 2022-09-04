@@ -44,7 +44,7 @@ export default function Stories() {
 
   const getFiles = async()=>{  
     let filterName = name == ""?"none":name
-   const response = await fetch(`http://localhost:8080/platform/performers/${filterName}/${gender}/${sort}`)
+   const response = await fetch(`http://api.myadultfan.com/platform/performers/${filterName}/${gender}/${sort}`)
    const data = await response.json();
    setFiles(data);  
   }

@@ -63,8 +63,7 @@ export const MobileMenuPer = (props: any) => {
             </a>
           </Link>
         </div>
-        {isInfluencers && (
-          <>
+        
         <div className="relative w-8 h-8 md:w-10 md:h-10 my-1 pb-6 ">
           <Link href='/post/new' >
             <a>
@@ -80,13 +79,7 @@ export const MobileMenuPer = (props: any) => {
             </a>
           </Link>
         </div>
-          </>
-        )}
-        {!isInfluencers && (
-          <div className="relative w-8 h-8 md:w-9 md:h-9 my-1">
-            <Image src={Star} layout="fill" />
-          </div>
-        )}
+        
         <div className="relative w-6 h-6 md:w-7 md:h-7 md:top-0.5 my-2">
           <Link href='/chat/id' >            
             <a>
@@ -97,14 +90,6 @@ export const MobileMenuPer = (props: any) => {
             </a>
           </Link>
         </div>
-        {!isInfluencers && (
-          <div className="relative w-7 md:w-11 h-7 md:h-8 top-0.5 my-1">
-            <Image src={ShoppingCart} layout="fill" />
-            <div className="absolute -top-1 -right-1 bg-maf-green rounded-full font-bold px-[0.175rem] md:px-1 py-[0.015rem] text-[0.5rem] md:text-xs">
-            <p className='text-black'>4</p>
-            </div>
-          </div>
-        )}
         <div className="relative w-8 h-8 md:w-10 md:h-10">
           <Image src={Search} layout="fill" />
         </div>

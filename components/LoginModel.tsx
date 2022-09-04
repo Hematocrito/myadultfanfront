@@ -105,11 +105,7 @@ const LoginModel = (props: { login: "model" | "fans" }) => {
     localStorage.setItem('tkWomen', tken);
     localStorage.setItem('sesion', 'true');
     if(myToken.status===0){
-      router.push({
-        pathname: '/influencers/id/feed',
-        query: { band: true,
-                 infl: true}
-      });
+      router.push('/influencers/id/feed');
     }else if(myToken.statusCode===400){
       alert("Error")
     }else if(myToken.statusCode===404){
