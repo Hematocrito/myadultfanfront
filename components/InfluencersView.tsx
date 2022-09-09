@@ -48,7 +48,7 @@ const InfluencersView = () => {
  */
     const getFiles = async()=>{  
       let filterName = name == ""?"none":name
-     const response = await fetch(`http://api.myadultfan.com/platform/performers/${filterName}/${gender}/${sort}`)
+     const response = await fetch(`http://api-temp.myadultfan.com/platform/performers/${filterName}/${gender}/${sort}`)
      const data = await response.json();
      setFiles(data);  
     }
