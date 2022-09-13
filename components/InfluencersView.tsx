@@ -51,10 +51,12 @@ const InfluencersView = () => {
      const response = await fetch(`http://api-temp.myadultfan.com/platform/performers/${filterName}/${gender}/${sort}`)
      const data = await response.json();
      setFiles(data);  
+     console.log("DATA "+data)
     }
 
     useEffect(() => {
       getFiles();
+      console.log("FILES "+files)
     }, [])
 
     

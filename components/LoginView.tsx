@@ -81,7 +81,7 @@ const LoginView = (props: { login: "model" | "fans" }) => {
     
     const JSONdata = JSON.stringify(data)
 
-    const endpoint = 'http://api.myadultfan.com/auth/login/email'
+    const endpoint = 'http://api-temp.myadultfan.com/auth/login/email'
 
     const options = {
       method: 'POST',    

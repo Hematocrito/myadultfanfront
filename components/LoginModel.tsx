@@ -82,7 +82,7 @@ const LoginModel = (props: { login: "model" | "fans" }) => {
     const JSONdata = JSON.stringify(data)
 
     // API endpoint where we send form data.
-    const endpoint = 'http://api.myadultfan.com/auth/login/email'
+    const endpoint = 'http://api-temp.myadultfan.com/auth/login/email'
 
     // Form the request for sending data to the server.
     const options = {
