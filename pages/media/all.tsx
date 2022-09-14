@@ -7,6 +7,7 @@ import UpIcon from 'public/assets/icons/ICONS-07.png';
 import MessageIcon from 'public/assets/icons/ICONS-08.png';
 import ViewIcon from 'public/assets/icons/ICONS-09.png';
 import { useEffect, useState } from 'react';
+import Navbar from 'components/Navbar';
 
 interface IFilter {
   name:string;
@@ -42,6 +43,7 @@ export default function MediaAll() {
 
   return (
     <>
+    <Navbar />
       <LayoutMediaHome filter={filter} setFilter={setFilter} getFiles={getFiles} >
         <div className="grid md:grid-cols-3 grid-cols-1 mb-6 md:mb-8">
         {files?.map((model: any) => (
