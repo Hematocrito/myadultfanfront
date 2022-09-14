@@ -30,7 +30,7 @@ export default function MediaAll() {
   
   const getVideos = async()=>{  
     let filterName = name == ""?"none":name; 
-    const response = await fetch(`http://api.myadultfan.com/platform/videos/free/${filterName}/${gender}/${sort}`)
+    const response = await fetch(`http://api-temp.myadultfan.com/platform/videos/free/${filterName}/${gender}/${sort}`)
    const data = await response.json();
    setVideos(data);  
   }

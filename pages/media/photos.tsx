@@ -31,7 +31,7 @@ export default function MediaPhotos() {
   
   const getFiles = async()=>{  
     let filterName = name == ""?"none":name; 
-   const response = await fetch(`http://api.myadultfan.com/platform/videos/${filterName}/${gender}/${sort}/${price}`)
+   const response = await fetch(`http://api-temp.myadultfan.com/platform/videos/${filterName}/${gender}/${sort}/${price}`)
    const data = await response.json();
    setFiles(data);  
   }
