@@ -129,7 +129,7 @@ const LoginView = (props: { login: "model" | "fans" }) => {
           </div>*/}
       <button type="button" className="text-gray-400 bg-white hover:bg-blue-150 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-semibold rounded-xl text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 first-letter:mb-2 w-full border-blue-150 border-2 my-5">
         
-        <svg version="1.1" className="w-6 ml-14 " id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" enable-background="new 0 0 64 64">
+        <svg version="1.1" className="w-6 ml-14 " id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 64 64" enableBackground="new 0 0 64 64">
         <g>
           <path fill="#FF7976" d="M32.709,0.835c-9.453,0-17.881,4.146-23.591,10.719c-1.74,2.005-3.231,4.232-4.417,6.641l10.501,8.021
             c1.217-3.693,3.567-6.862,6.64-9.104c3.043-2.217,6.795-3.527,10.866-3.527c4.398,0,8.37,1.559,11.491,4.109l9.079-9.066
