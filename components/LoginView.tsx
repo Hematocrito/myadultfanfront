@@ -72,17 +72,13 @@ const LoginView = (props: { login: "model" | "fans" }) => {
   } = useForm({ mode: "onBlur", resolver: yupResolver(validationSchema) });
 
   const handleSubmit = async (event:any) => {
-    // Stop the form from submitting and refreshing the page.
     event.preventDefault()
     const data = {
       email: event.target.email.value,
       password: event.target.password.value,
     }
-    
     const JSONdata = JSON.stringify(data)
-
     const endpoint = 'https://api.myadultfan.com/auth/login/email'
-
     const options = {
       method: 'POST',    
       headers: {
@@ -91,7 +87,6 @@ const LoginView = (props: { login: "model" | "fans" }) => {
       body: JSONdata,
     }
     const response = await fetch(endpoint, options)
-
     const result = await response.text()
     var myToken = JSON.parse(result);
     const tken = myToken.data.token
