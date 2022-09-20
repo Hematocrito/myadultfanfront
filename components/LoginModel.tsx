@@ -201,7 +201,7 @@ const LoginModel = (props: { login: "model" | "fans" }) => {
       </form>
       <div className="flex flex-col items-center justify-center">
           <button
-            onClick={() => router.push("/register/model")}
+            onClick={() => router.push("/register/model-full")}
             className="border-2 font-medium shadow-md text-black shadow-black/30 border-white rounded-3xl w-52 px-1 py-1 text-lg my-2"
           >
             {texto5}

@@ -161,102 +161,11 @@ export const MobileMenuPer = (props: any) => {
         <div className="flex-none transition-all duration-200">
           <div className="px-2 relative transition-all duration-500 w-full">
             <nav id="nav" className="lg:text-sm lg:leading-6 relative">
-              {!isInfluencers && (
-                <ul>
-                  <li>
-                    <Link href='/admin/users/MyInfo' >
-                      <a className="group flex items-center my-2 font-medium text-blue-450">                    
-                        <div className="h-6 w-6 relative mx-4 ">
-                          <Image
-                            src={ProfileIcon}
-                            layout="fill"
-                            className="object-fill"
-                          />                          
-                        </div>
-                        Edit Profile                          
-                      </a>
-                    </Link>   
-                  </li>
-                  <li>
-                    <Link href='/admin/users/Favourite/MyFavourite' >
-                      <a className="group flex items-center my-2 font-medium text-blue-450">  
-                        <div className="h-6 w-6 relative mx-4">
-                          <Image
-                            src={ThumbUp}
-                            layout="fill"
-                            className="object-fill"
-                          />
-                        </div>
-                        Favorite Vids                  
-                      </a>
-                    </Link>   
-                  </li>
-                  <li>
-                    <Link href='/admin/users/WishList/MyWishList' >
-                      <a className="group flex items-center my-2 font-medium text-blue-450">                      
-                        <div className="h-6 w-6 relative mx-4">
-                          <Image
-                            src={Heart}
-                            layout="fill"
-                            className="object-fill"
-                          />
-                        </div>
-                        Wishlist Vids
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href='/admin/users/Subscriptions/MySubscriptions' >
-                      <a className="group flex items-center my-2 font-medium text-blue-450">                      
-                        <div className="h-6 w-6 relative mx-4">
-                          <Image
-                            src={StarMenu}
-                            layout="fill"
-                            className="object-fill"
-                          />
-                        </div>
-                        Subscriptions
-                      </a>
-                    </Link>
-                  </li>                  
-                  <li>
-                    <Link href='/admin/users/Payment/PaymentHistory' >
-                      <a className="group flex items-center my-2 font-medium text-blue-450"> 
-                        <div className="h-6 w-6 relative mx-4">
-                          <Image
-                            src={LinkMenu}
-                            layout="fill"
-                            className="object-fill"
-                          />
-                        </div>
-                        Transactions
-                      </a>
-                    </Link>
-                  </li>
-                  <li>
-                  <Link href='/influencers' > 
-                  <a className="group flex items-center mb-6 font-medium text-blue-450" onClick={salir}>                    
-                      <div className="cursor-pointer flex">
-                        <div className="h-6 w-6 relative mx-4">
-                          <Image
-                            src={SingOut}
-                            layout="fill"
-                            className="object-fill"
-                          />
-                        </div>
-                        Sing Out
-                      </div>
-                    </a>
-                    </Link> 
-                  </li>
-                  <DesplgMobile />
-                </ul>
-                
-              )}
+             
               {isInfluencers && (
                 <ul>
                   <li>
-                    <Link href='/admin/model/Profile' >
+                    <Link href='/admin/model/profile' >
                       <a className="group flex items-center my-2 font-medium text-blue-450"> 
                         <div className="h-6 w-6 relative mx-4">
                           <Image

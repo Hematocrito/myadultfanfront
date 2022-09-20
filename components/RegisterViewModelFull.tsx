@@ -218,7 +218,7 @@ const RegisterViewModelFull = (props: any) => {
   <Navbar />
     <PublicContainer className="md:w-[430px] lg:w-[440px]">      
       <div className="flex items-center justify-around">
-        <h1 className="font-lemon-milk text-xl md:text-2xl font-extrabold text-black leading-0 mb-3 mt-3 text-center">
+        <h1 className="font-lemon-milk text-xl md:text-2xl font-extrabold text-blue-450 leading-0 mb-3 mt-3 text-center">
             INFLUENCER REGISTER
         </h1>
       </div>
