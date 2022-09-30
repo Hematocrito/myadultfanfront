@@ -27,7 +27,7 @@ export default function Feed() {
 
   const getFiles = async()=>{  
     let filterName = name == ""?"none":name
-   const response = await fetch(`http://api.myadultfan.com/platform/feeds/${filterName}/${gender}/${sort}`)
+   const response = await fetch(`http://localhost:9000/platform/feeds/${filterName}/${gender}/${sort}`)
    const data = await response.json();
    setFiles(data);  
   }

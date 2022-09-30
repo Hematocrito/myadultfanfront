@@ -48,7 +48,7 @@ const InfluencersView = () => {
  */
     const getFiles = async()=>{  
       let filterName = name == ""?"none":name
-     const response = await fetch(`https://api.myadultfan.com/platform/performers/${filterName}/${gender}/${sort}`)
+     const response = await fetch(`http://localhost:9000/platform/performers/${filterName}/${gender}/${sort}`)
      const data = await response.json();
      setFiles(data);  
      console.log("DATA "+data)
@@ -63,20 +63,21 @@ const InfluencersView = () => {
     
     return (
       <div>
-        <Navbar />
+      <Navbar />
         <LayoutHome filter={filter} setFilter={setFilter} getFiles={getFiles} files={files}>
-          <div className="grid gap-2 grid-cols-2 sm:grid-cols-2  lg:grid-cols-4   justify-items-center md:mx-[13%] md:mb-4">
-
-            {files?.map((model: any) => (
-              <Link href='/influencers/id/feed' key={model.id}>
-                <a className="w-full">
-                  <PreviewProfileCard model={model} />
-                </a>
-              </Link>
-            ))}
-          </div>
-          {/* <StoriesModal model={model} /> */}
-        </LayoutHome>
+      
+        <div className="grid grid-cols-3 gap-2 md:gap-6 justify-items-center mx-1 md:mx-[13%] md:mb-4 my-3">
+        {files?.map((model: any) => (
+            <Link href='/influencers/id/feed'
+             key={model.id}>
+              <a className="w-full">
+                <PreviewProfileCard model={model} />
+              </a>
+            </Link>
+          ))}
+        </div>
+      {/*  <StoriesModal model={model} /> */}
+      </LayoutHome>
       </div>
     );
 }

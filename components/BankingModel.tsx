@@ -8,6 +8,8 @@ import { useRouter } from "next/router";
 import CountrySelect from './wrappers/CountrySelect';
 import Ventana from './Ventana';
 import VentanaAvatar from './Ventana-avatar';
+import { useEffect, useState } from 'react';
+import NavbarMod from './NavbarMod';
 
 export const BasicInfo = (props: { admin: "model" | "fans" }) => {
   const router = useRouter();
@@ -28,9 +30,17 @@ export const BasicInfo = (props: { admin: "model" | "fans" }) => {
     default:
         
   }
+  const [cover, setCover] = useState('');
+    
+  useEffect(() => {  
+    let var3 = localStorage.getItem('cover') 
+    if(var3!=null) setCover(var3)
+  }, [])  
+  
     return (
-        <section >                
-                <div className="flex justify-between lg:w-full w-full h-64 lg:h-[70vh] bg-local bg-[url('http://myadultfan.com/assets/img/modelbg.jpg')] md:bg-cover md:bg-top bg-contain bg-center">
+        <section > 
+            <NavbarMod />              
+                <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${cover})`}}>
                     <div className='mt-40 ml-5'>
                     <VentanaAvatar />
                     </div>
@@ -42,7 +52,7 @@ export const BasicInfo = (props: { admin: "model" | "fans" }) => {
                 
                 <div className="pl-4 flex gap-7 mb-12 mt-10 w-full lg:text-2xl md:text-xs lg:justify-center">
                     
-                        <Link href={{ pathname: '/admin/model/Profile', query: { band: true, infl: true } }} >
+                        <Link href='/admin/model/profile' >
                             <a className="lg:py-2 lg:px-2 md:text-right md:py-2 md:px-2 lg:text-2xl md:text-xs text-black  border-black font-semibold">PROFILE SETTINGS</a>
                         </Link>
                     

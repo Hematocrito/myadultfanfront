@@ -92,7 +92,9 @@ export const BasicInfo = () => {
             newObject.username = details.data.username
             newObject.email = details.data.email
             newObject.gender = details.data.gender 
-            newObject.status = details.data.status                                 
+            newObject.status = details.data.status 
+            newObject.avatar = details.data.avatar  
+            newObject.cover = details.data.cover                              
             setPerfil(newObject) 
         }
         fetchData()
@@ -101,23 +103,31 @@ export const BasicInfo = () => {
         
     }, [])
 
-    let firstName, username, email, lastName, gender, statusInf = ''
+    var user = ['', '', '']
+    let firstName, username, email, lastName, gender, statusInf, avatar = ''
     if(perfil!==null){
         firstName = perfil.firstName
         lastName = perfil.lastName
         console.log("LOco de la cabeza "+perfil.status) 
-        username = perfil.username
+        user[0] = perfil.username
         email = perfil.email  
         gender = perfil.gender
         statusInf = perfil.status
+        user[1] = perfil.avatar
+        user[2] = perfil.cover
     } 
-   
+  console.log("Cover "+user[2])  
+  function datosPerformer(){
+    localStorage.setItem('username', user[0]);
+    localStorage.setItem('avatar', user[1]);
+    localStorage.setItem('cover', user[2]);
+  } 
     return (
         <section >
             <NavbarMod />
-             <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local bg-[url('http://myadultfan.com/assets/img/modelbg.jpg')] md:bg-cover md:bg-top bg-contain bg-center">
+             <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${user[2]})`}}>
                     <div className='ml-5 cont-avatar'>
-                    <VentanaAvatar user={username} />
+                    <VentanaAvatar />
                     </div>
                         
                     <div className='mt-10 mr-10'>
@@ -128,8 +138,8 @@ export const BasicInfo = () => {
 
                 <a className="text-black border-b-[3px] border-black font-semibold text-right">PROFILE SETTINGS</a>
 
-                <Link href='/admin/model/Profile/BankingSettings' >
-                    <a className="text-blue-450 font-semibold hover:text-blue-450 transition duration-300 cursor-pointer">BANKING SETTINGS</a>
+                <Link href='/admin/model/profile/banking-settings' >
+                    <a className="text-blue-450 font-semibold hover:text-blue-450 transition duration-300 cursor-pointer" onClick={datosPerformer}>BANKING SETTINGS</a>
                 </Link>
 
             </div>
@@ -165,7 +175,7 @@ export const BasicInfo = () => {
                                         Username
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="text" type="text" value={username}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="text" type="text" value={user[0]}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>

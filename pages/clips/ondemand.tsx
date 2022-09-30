@@ -30,7 +30,7 @@ export default function ClipsOnDemand({ models }: any) {
   
   const getFiles = async()=>{  
     let filterName = name == ""?"none":name; 
-   const response = await fetch(`http://api-temp.myadultfan.com/platform/videos/pay/${filterName}/${gender}/${sort}/${price}`)
+   const response = await fetch(`http://localhost:9000/platform/videos/pay/${filterName}/${gender}/${sort}/${price}`)
    const data = await response.json();
    setVideos(data);  
   }
