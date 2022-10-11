@@ -11,7 +11,7 @@ import VentanaAvatar from './Ventana-avatar';
 import { useEffect, useState } from 'react';
 import NavbarMod from './NavbarMod';
 
-export const BasicInfo = (props: { admin: "model" | "fans" }) => {
+export const BasicInfo = () => {
   const router = useRouter();
   let texto1;
   switch(router.locale) {    
@@ -31,7 +31,9 @@ export const BasicInfo = (props: { admin: "model" | "fans" }) => {
         
   }
   const [cover, setCover] = useState('');
-    
+  var vacio = ['', '', '']
+  const [user, setUser] = useState(vacio);
+  
   useEffect(() => {  
     let var3 = localStorage.getItem('cover') 
     if(var3!=null) setCover(var3)

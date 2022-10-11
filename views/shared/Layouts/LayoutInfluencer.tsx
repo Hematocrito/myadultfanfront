@@ -1,4 +1,4 @@
-import BannerInfluencerImage from "public/banner/1-1 piezas MOVIL myadult log out-01.png";
+import BannerInfluencerImage from "public/assets/img/sin-cover.png";
 import BannerInfluencer from "components/BannerInfluencer";
 import { Navbar } from "views/shared";
 import SubscribeInfluencer from "components/SubscribeInfluencer";

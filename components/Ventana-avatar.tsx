@@ -8,7 +8,7 @@ import { AiFillCamera } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-const VentanaAvatar = ({user}:any) => {
+const VentanaAvatar = () => {
   const router = useRouter()
   const [open, setOpen] = useState(false);
 
@@ -18,15 +18,17 @@ const VentanaAvatar = ({user}:any) => {
   const [foto, setFoto] = useState('https://randomuser.me/api/portraits/med/women/80.jpg');
   const [username, setUsername] = useState('');
   const [avatar, setAvatar] = useState('');
-    
+  
   useEffect(() => {  
-    let avatarWomen:any = localStorage.getItem('newImage')        
-    if(avatarWomen) setFoto(avatarWomen)
-    let var1 = localStorage.getItem('username') 
+    /*let avatarWomen:any = localStorage.getItem('newImage')        
+    if(avatarWomen) setFoto(avatarWomen)*/
+    
+    let var1 = localStorage.getItem('variable1') 
     console.log("!!!!!!!",var1)
     if(var1!=null) setUsername(var1)
     let var2 = localStorage.getItem('avatar') 
     if(var2!=null) setAvatar(var2)
+    console.log("AVATAR", var2)
     
   }, [])
 
@@ -35,10 +37,10 @@ const VentanaAvatar = ({user}:any) => {
     if(avatarWomen) setFoto(avatarWomen)
       
     console.log("Canvas after"+foto)
-    router.push('/admin/model/Profile');
+    router.push('/admin/model/profile');
     onCloseModal()
   }
-
+  
   return (
     <div>
       <div className='flex items-center sm:gap-3 gap-2 ' >                            
@@ -54,7 +56,7 @@ const VentanaAvatar = ({user}:any) => {
         
         <MyEditorAvatar pic={foto} />
         <div className='flex justify-end'>
-            <button className='bg-blue-500 py-1 px-6 text-white' onClick={guardar}>Cerrar</button>
+            <button className='bg-blue-500 py-1 px-6 text-white' onClick={guardar}>Guardar</button>
         </div>
         
       </Modal>

@@ -32,7 +32,7 @@ export default function MediaAll() {
   
   const getFiles = async()=>{  
     let filterName = name == ""?"none":name; 
-   const response = await fetch(`http://localhost:9000/platform/photos/${filterName}/${gender}/${sort}/${price}`)
+   const response = await fetch(`https://api.myadultfan.com/platform/photos/${filterName}/${gender}/${sort}/${price}`)
    const data = await response.json();
    setFiles(data);  
   }

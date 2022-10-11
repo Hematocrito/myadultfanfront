@@ -2,8 +2,9 @@ import React from "react";
 import AvatarEditor from "react-avatar-editor";
 
 export default class Main extends React.Component {
+  
   state = {
-    image: "",
+    image: localStorage.getItem("avatar"),
     allowZoomOut: false,
     position: { x: 0.5, y: 0.5 },
     scale: -1,
@@ -102,14 +103,12 @@ export default class Main extends React.Component {
       // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
       // drawn on another canvas, or added to the DOM.
       const canvas = this.editor.getImage()
-      const canvas2 = canvas.toDataURL()
-      console.log("Canvas "+canvas.toDataURL())
-      localStorage.setItem("newImage", canvas2)
+
       // If you want the image resized to the canvas size (also a HTMLCanvasElement)
       const canvasScaled = this.editor.getImageScaledToCanvas()
+      console.log(canvasScaled)
     }
   }
-
   render() {
     return (
       <div>
@@ -143,7 +142,7 @@ export default class Main extends React.Component {
           step="0.01"
           defaultValue="1"
         />        
-        <button className='bg-blue-500 ml-9 mb-4 py-1 px-5 text-white' onClick={this.onClickSave}>Guardar</button>
+        <button className='bg-blue-500 ml-9 mb-4 py-1 px-5 text-white' onClick={this.onClickSave}>Seleccionar</button>
         
       </div>
     );

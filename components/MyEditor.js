@@ -5,7 +5,7 @@ import { Nu } from "react-flags-select";
 
 class MyEditor extends React.Component {
     state = {
-        image: 'http://localhost:3000/assets/img/modelbg.jpg',
+        image: localStorage.getItem("cover"),
         allowZoomOut: false,
         position:{ x: 0.5, y: 0.5 },
         scale: -1,
@@ -16,16 +16,16 @@ class MyEditor extends React.Component {
         height: 120,
       }
       
-    handleNewImage = (e:any) => {
+    handleNewImage = (e) => {
     this.setState({ image: e.target.files[0] })
     }
 
-    handleScale = (e:any) => {
+    handleScale = (e) => {
         const scale = parseFloat(e.target.value)
         this.setState({ scale })
     }
 
-    handlePositionChange = (position:any) => {
+    handlePositionChange = (position) => {
         this.setState({ position })
       }
     
