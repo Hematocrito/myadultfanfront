@@ -1,4 +1,4 @@
-import { BasicInfo } from 'components/BasicInfo';
+import { BasicInfo } from 'components/ProfileModel';
 import { GetStaticProps } from 'next';
 
 export default BasicInfo;

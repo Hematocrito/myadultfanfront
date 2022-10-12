@@ -5,7 +5,7 @@ import { Nu } from "react-flags-select";
 
 class MyEditor extends React.Component {
     state = {
-        image: localStorage.getItem("cover"),
+        image: localStorage.getItem("variable3"),
         allowZoomOut: false,
         position:{ x: 0.5, y: 0.5 },
         scale: -1,

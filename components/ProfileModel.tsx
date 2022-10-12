@@ -8,13 +8,13 @@ import { useRouter } from "next/router";
 import CountrySelect from './wrappers/CountrySelect';
 import MyEditor from './MyEditor';
 import Ventana from './Ventana';
-import VentanaAvatar from './Ventana-avatar';
 import CountryModel from './wrappers/CountryModel';
 import { useRef } from 'react';
 import React, { useState, useEffect } from 'react';
 import { BaseEmoji, Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 import NavbarMod from './NavbarMod';
+import Avatar1 from './Avatar1';
 
 
 function ventana() {
@@ -96,6 +96,8 @@ export const BasicInfo = () => {
             newObject.avatar = details.data.avatar  
             newObject.cover = details.data.cover                              
             setPerfil(newObject) 
+            localStorage.setItem("variable2", details.data.avatar)
+            localStorage.setItem("variable3", details.data.cover)
         }
         fetchData()
             // make sure to catch any error
@@ -126,7 +128,7 @@ export const BasicInfo = () => {
             <NavbarMod />
              <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${fondo})`}}>
                     <div className='ml-5 cont-avatar'>
-                    <VentanaAvatar />
+                    <Avatar1 />
                     </div>
                         
                     <div className='mt-10 mr-10'>
@@ -137,7 +139,7 @@ export const BasicInfo = () => {
 
                 <a className="text-black border-b-[3px] border-black font-semibold text-right">PROFILE SETTINGS</a>
 
-                <Link href='/admin/model/profile/banking-settings' >
+                <Link href='/admin/model/mydata/banking-settings' >
                     <a className="text-blue-450 font-semibold hover:text-blue-450 transition duration-300 cursor-pointer" onClick={enviarData}>BANKING SETTINGS</a>
                 </Link>
 

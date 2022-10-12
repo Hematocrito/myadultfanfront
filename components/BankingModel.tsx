@@ -7,9 +7,9 @@ import { CardMedia, Container } from "@mui/material";
 import { useRouter } from "next/router";
 import CountrySelect from './wrappers/CountrySelect';
 import Ventana from './Ventana';
-import VentanaAvatar from './Ventana-avatar';
 import { useEffect, useState } from 'react';
 import NavbarMod from './NavbarMod';
+import Avatar1 from './Avatar1';
 
 export const BasicInfo = () => {
   const router = useRouter();
@@ -35,7 +35,8 @@ export const BasicInfo = () => {
   const [user, setUser] = useState(vacio);
   
   useEffect(() => {  
-    let var3 = localStorage.getItem('cover') 
+    let var3 = localStorage.getItem('variable3')
+    console.log("varable3",var3) 
     if(var3!=null) setCover(var3)
   }, [])  
   
@@ -44,7 +45,7 @@ export const BasicInfo = () => {
             <NavbarMod />              
                 <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${cover})`}}>
                     <div className='mt-40 ml-5'>
-                    <VentanaAvatar />
+                    <Avatar1 />
                     </div>
                         
                     <div className='mt-10 mr-10'>
@@ -54,7 +55,7 @@ export const BasicInfo = () => {
                 
                 <div className="pl-4 flex gap-7 mb-12 mt-10 w-full lg:text-2xl md:text-xs lg:justify-center">
                     
-                        <Link href='/admin/model/profile' >
+                        <Link href='/admin/model/mydata' >
                             <a className="lg:py-2 lg:px-2 md:text-right md:py-2 md:px-2 lg:text-2xl md:text-xs text-black  border-black font-semibold">PROFILE SETTINGS</a>
                         </Link>
                     

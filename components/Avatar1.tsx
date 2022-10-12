@@ -8,7 +8,7 @@ import { AiFillCamera } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-const VentanaAvatar = () => {
+const Avatar1 = () => {
   const router = useRouter()
   const [open, setOpen] = useState(false);
 
@@ -26,7 +26,7 @@ const VentanaAvatar = () => {
     let var1 = localStorage.getItem('variable1') 
     console.log("!!!!!!!",var1)
     if(var1!=null) setUsername(var1)
-    let var2 = localStorage.getItem('avatar') 
+    let var2 = localStorage.getItem('variable2') 
     if(var2!=null) setAvatar(var2)
     console.log("AVATAR", var2)
     
@@ -37,7 +37,7 @@ const VentanaAvatar = () => {
     if(avatarWomen) setFoto(avatarWomen)
       
     console.log("Canvas after"+foto)
-    router.push('/admin/model/profile');
+    router.push('/admin/model/mydata');
     onCloseModal()
   }
   
@@ -64,4 +64,4 @@ const VentanaAvatar = () => {
   );
 };
 
-export default VentanaAvatar
+export default Avatar1

@@ -165,7 +165,7 @@ export const MobileMenuPer = (props: any) => {
               {isInfluencers && (
                 <ul>
                   <li>
-                    <Link href='/admin/model/profile' >
+                    <Link href='/admin/model/mydata' >
                       <a className="group flex items-center my-2 font-medium text-blue-450"> 
                         <div className="h-6 w-6 relative mx-4">
                           <Image
