@@ -81,7 +81,7 @@ export const BasicInfo = () => {
             redirect: 'follow'
             };
 
-            const endpoint = "http://api.myadultfan.com/users/me";
+            const endpoint = "https://api.myadultfan.com/users/me";
             const response = await fetch(endpoint, options)
             const result = await response.text()
             var details = JSON.parse(result);

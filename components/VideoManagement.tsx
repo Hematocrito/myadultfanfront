@@ -25,7 +25,7 @@ export const VideoManagement = () => {
                 redirect: 'follow'
                 };
                 
-            const endpoint = "http://api.myadultfan.com/performer/performer-assets/videos/search?limit=10&offset=0&sort=desc&sortBy=createdAt"  
+            const endpoint = "https://api.myadultfan.com/performer/performer-assets/videos/search?limit=10&offset=0&sort=desc&sortBy=createdAt"  
                         
             const response = await fetch(endpoint, options)
             const result:any = await response.json()

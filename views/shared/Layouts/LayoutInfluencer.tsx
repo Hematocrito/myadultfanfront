@@ -1,4 +1,4 @@
-import BannerInfluencerImage from "public/assets/img/sin-cover.png";
+import BannerInfluencerImage from "public/assets/img/upload_cover.jpeg";
 import BannerInfluencer from "components/BannerInfluencer";
 import { Navbar } from "views/shared";
 import SubscribeInfluencer from "components/SubscribeInfluencer";
