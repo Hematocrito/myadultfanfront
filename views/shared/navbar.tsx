@@ -47,7 +47,7 @@ export const Navbar = ({ routes, ...props }: any) => {
   // const { asPath } = useRouter();
   return (
     <div>
-      <ul className="flex justify-around px-4 overflow-hidden text-xs border-b border-gray-300">
+      <ul className="flex justify-around px-20 overflow-hidden font-myriad text-base font-bold border-gray-300">
         {links.map((link: any) => {
           return (
             <li

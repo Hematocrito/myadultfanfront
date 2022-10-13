@@ -4,7 +4,7 @@ export const Stories = ({ models }: any) => {
   // const { womens } = useFakeWomens();
 
   return (
-    <div className="">
+    <div className="mx-1 md:mx-20">
       <h3 className="text-xs text-gray-600 font-light w-full mx-2">
         New Stories
       </h3>

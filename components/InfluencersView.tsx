@@ -64,8 +64,7 @@ const InfluencersView = () => {
     return (
       <div>
       <Navbar />
-        <LayoutHome filter={filter} setFilter={setFilter} getFiles={getFiles} files={files}>
-      
+        <LayoutHome filter={filter} setFilter={setFilter} getFiles={getFiles} files={files}>      
         <div className="grid grid-cols-3 gap-2 md:gap-6 justify-items-center mx-1 md:mx-[13%] md:mb-4 my-3">
         {files?.map((model: any) => (
             <Link href='/influencers/id/feed'

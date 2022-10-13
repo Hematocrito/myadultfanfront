@@ -42,7 +42,7 @@ export default function BannerInfluencer({ influencer }: any) {
 
 
   return (
-    <div className="relative h-56 lg:h-[70vh] w-full md:w-[80%] md:mx-[10%] mt-1">
+    <div className="relative h-56 lg:h-[70vh] w-full md:w-[80%] md:mx-[10%] mt-1 bg-gray-300">
       <Image src={influencer} layout="fill" className="object-fill" />
       <div className="absolute w-full top-1">
         <div className="flex justify-around">
@@ -74,12 +74,12 @@ export default function BannerInfluencer({ influencer }: any) {
               <p className='text-base md:text-lg font-medium mt-2'>LIVE</p>
           </div>
           <div className="flex md:w-full">
-            <button className="border-2 border-white bg-white text-gray-400 font-extrabold shadow-md text-center rounded-2xl w-6/12 md:w-2/12 px-3 text-xs md:text-sm py-1 md:py-0 mb-2">
+            <button className="border-2 border-white bg-white text-gray-400 font-extrabold shadow-md text-center rounded-md md:rounded-lg w-6/12 md:w-2/12 px-3 text-xs md:text-sm py-1 md:py-0 mb-2">
               {txtBI3}
             </button>
             <button
               onClick={() => openModal('modal')}
-              className="border-2 border-blue-450 bg-blue-450 font-extrabold shadow-md text-center rounded-2xl w-3/12 md:w-2/12 px-3 text-xs md:text-sm py-1 md:py-0 mb-2 ml-2"
+              className="border-2 border-blue-450 bg-blue-450 font-extrabold shadow-md text-center rounded-md md:rounded-lg w-3/12 md:w-2/12 px-3 text-xs md:text-sm py-1 md:py-0 mb-2 ml-2"
             >
               {txtBI4}
             </button>
