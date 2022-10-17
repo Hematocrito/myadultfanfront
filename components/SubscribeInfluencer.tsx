@@ -35,7 +35,7 @@ export default function SubscribeInfluencer() {
   }
   return (
     <>
-    <div className="grid grid-cols-1 md:grid-cols-2">    
+    <div className="grid grid-cols-1 md:grid-cols-2 mx-0 md:mx-[12%] my-1 md:my-2">    
     <div className="flex flex-col w-full items-center px-3 mt-2 md:mb-4">
         <button className="border-2 border-maf-pink bg-maf-pink text-white font-extrabold shadow-md text-center rounded-lg leading-5 w-full md:w-80 text-lg my-2">
           <div>{txtSub1} $7.99</div> <div>{txtSub2}</div>
@@ -56,16 +56,16 @@ export default function SubscribeInfluencer() {
         </button>
       </div>  
       <div className="w-full md:w-4/5">
-        <p className="text-md my-4 mx-3">
+        <p className="text-md my-4 mx-2 md:mx-10">
           Hi guys its me bratty luna. Welcome to my private stories. Join me
           and see my naughty stories that are too hot for my public. Feel free
           to chat and send me photos, daily posts. No screenshots or
           screenrecordings pls! These are just for us (will be deleted){' '}
           <span className="font-semibold">
             PLEASE ALLOW 24 HOURS TO BE ADDED
-          </span>
+          </span><br />
+          THANK YOUs
         </p>
-        <div>THANK YOUs</div>
       </div>
       
     </div>

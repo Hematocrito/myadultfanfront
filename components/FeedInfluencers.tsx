@@ -42,18 +42,45 @@ export default function FeedInfluencers({ models }: any) {
   }
 
   const [more, setMore] = useState(true);
+  const [feed, setFeed] = useState<any>({})
 
   useEffect(() => {  
+    //Para que es esta sesión??
     let localSesion = localStorage.getItem('sesion')  
     console.log("SESION FEED"+localSesion)
-    
-    
+    const fetchData = async () => {    
+      let tk_code = localStorage.getItem('tkWomen')
+      console.log("TOKEN "+tk_code);
+      let token:any = tk_code? tk_code: ''
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", token);
+
+      var options:RequestInit = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+      const endpoint = "https://api.myadultfan.com/feeds/performers";
+      const response = await fetch(endpoint, options);
+      const result = await response.text()
+      var details = JSON.parse(result);
+      console.log("??????"+details.status)
+      let publication: any = {};
+      publication.id = details.data._id
+      publication.type = details.data.type
+      publication.text = details.data.text
+    }
+    fetchData()
+            // make sure to catch any error
+            .catch(console.error);;
     }, [])
 
   return (
     <>
       {models.map((model: any) => (
-        <div key={model.id} className="md:mx-[20%]">
+        <div key={model.id} className="md:mx-[33%]">
           <Publication file={{
     "fileIds": [],
     "pollIds": [],
