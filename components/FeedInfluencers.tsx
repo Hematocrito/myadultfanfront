@@ -66,11 +66,13 @@ export default function FeedInfluencers({ models }: any) {
       const response = await fetch(endpoint, options);
       const result = await response.text()
       var details = JSON.parse(result);
-      console.log("??????"+details.status)
+      
       let publication: any = {};
       publication.id = details.data._id
       publication.type = details.data.type
       publication.text = details.data.text
+      publication.fileIds = details.data.fileIds
+      console.log("filesId "+publication.fileIds)
     }
     fetchData()
             // make sure to catch any error

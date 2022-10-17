@@ -47,11 +47,11 @@ export const Navbar = ({ routes, ...props }: any) => {
   // const { asPath } = useRouter();
   return (
     <div>
-      <ul className="flex justify-around px-20 overflow-hidden font-myriad text-base font-bold border-gray-300">
+      <ul className="flex justify-around px-5 md:px-20 overflow-hidden font-myriad text-base font-bold border-gray-300">
         {links.map((link: any) => {
           return (
             <li
-              className={`mx-3 uppercase mt-1 font-extrabold ${
+              className={`ml-1 text-sm uppercase mt-1 font-extrabold ${
                 // ||
                 // (asPath.slice(0, asPath.lastIndexOf('/')) ===
                 //   `/${link.path.slice(0, link.path.lastIndexOf('/'))}`
