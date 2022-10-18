@@ -11,7 +11,7 @@ const FeedInfluencers = dynamic(
   { loading: () => <p>Loading ...</p> }
 )
 
-export default function Feed({ models }: any) {
+export default function Feed() {
   useEffect(() => {
     const body = document.body;
     body.style.overflow = 'auto';
@@ -47,12 +47,13 @@ export default function Feed({ models }: any) {
             </div>
           </div>
         </Filter>
-        <FeedInfluencers models={models} />
+        <FeedInfluencers />
       </LayoutInfluencer>
     </>
   );
 }
 
+/*
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const res = await fetch(
     'https://randomuser.me/api/?gender=female&results=20'
@@ -75,4 +76,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       models,
     },
   };
-};
+};*/
