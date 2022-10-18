@@ -31,10 +31,13 @@ export default function Publication({ file }: any) {
     <>
       <PublicationHead file={file} />
       <div className="flex flex-col mb-8 md:mt-2">
+      <p className="font-normal mx-1 text-sm">
+          {file.texto}
+        </p>
         <div className="w-full h-60 sm:h-96 relative">
           <Image
-            src={'/assets/img/MALE.png'}
-            alt={file}
+            src={file.photo}
+            alt={''}
             layout="fill"
             className={`object-cover ${isSubscribe ? 'blur-[2px]' : ''}`}
           />

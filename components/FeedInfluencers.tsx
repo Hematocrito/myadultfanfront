@@ -6,7 +6,7 @@ import NavbarMod from "./NavbarMod";
 const Publication = dynamic(() => import('./Publication'),
   { loading: () => <p>Loading ...</p> });
 
-export default function FeedInfluencers({ models }: any) {
+export default function FeedInfluencers() {
   const router = useRouter();
   let texto1, texto2, texto3, texto4, texto5;
   switch (router.locale) {
@@ -42,7 +42,7 @@ export default function FeedInfluencers({ models }: any) {
   }
 
   const [more, setMore] = useState(true);
-  const [feed, setFeed] = useState<any>({})
+  const [datos, setDatos] = useState([]);
 
   useEffect(() => {  
     //Para que es esta sesión??
@@ -64,53 +64,32 @@ export default function FeedInfluencers({ models }: any) {
 
       const endpoint = "https://api.myadultfan.com/feeds/performers";
       const response = await fetch(endpoint, options);
-      const result = await response.text()
-      var details = JSON.parse(result);
-      
-      let publication: any = {};
-      publication.id = details.data._id
-      publication.type = details.data.type
-      publication.text = details.data.text
-      publication.fileIds = details.data.fileIds
-      console.log("filesId "+publication.fileIds)
+      const result:any = await response.json();
+
+      let arreglo:any = []
+      const items = result.data.data.map((item:any)=>{
+        let feed:any = {};  
+        feed.id = item._id 
+        feed.texto = item.text  
+        feed.creado = item.createdAt
+        feed.nombre = item['performer']['username']
+        feed.avatar = item['performer']['avatar']
+        feed.photo = item['files'][0]['url'] 
+        //console.log(item['files'][0]['url'])
+        arreglo.push(feed)
+      })
+      setDatos(arreglo)      
     }
     fetchData()
             // make sure to catch any error
             .catch(console.error);;
     }, [])
-
+    
   return (
     <>
-      {models.map((model: any) => (
-        <div key={model.id} className="md:mx-[33%]">
-          <Publication file={{
-    "fileIds": [],
-    "pollIds": [],
-    "status": "active",
-    "isPinned": false,
-    "totalLike": 0,
-    "totalComment": 0,
-    "isSale": false,
-    "price": 0,
-    "_id": "62b25485db1106d1ebb49060",
-    "type": "text",
-    "text": "Bla bla bla",
-    "orientation": "male",
-    "fromSource": "performer",
-    "fromSourceId": {
-        "_id": "629a497e10c9f89d2df71d0b",
-        "name": "Juanpa",
-        "firstName": "Juan",
-        "lastName": "Lasso",
-        "username": "juanpiscamo",
-        "gender": "male",
-        "avatarId": null
-    },
-    "pollExpiredAt": "2022-06-21T23:30:13.138Z",
-    "createdAt": "2022-06-21T23:30:13.138Z",
-    "updatedAt": "2022-06-21T23:30:13.138Z",
-    "__v": 0
-}} />
+      {datos.map((dato: any) => (
+        <div key={dato.id} className="md:mx-[33%]">
+          <Publication file={dato} />
         </div>
       ))}
       {more && (
