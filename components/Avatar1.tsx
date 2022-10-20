@@ -38,8 +38,8 @@ const Avatar1 = ({ user }: any) => {
   return (
     <div>
       <div className='flex items-center sm:gap-3 gap-2 ' >                            
-          <div className="relative rounded-full w-[112px]  md:w-40 h-[112px] lg:w-[179px] lg:h-[179px] md:h-40 border-4 border-blue-450 md:mb-8 md:ml-5 mb-0 ml-0 ">
-              <img className="relative border-[2px] border-white rounded-full p-0.5 lg:w-[170px] lg:h-[170px] md:w-[175px] md:h-[155px] w-56 h-49" src={user[1]} />
+          <div className="relative rounded-full w-[110px] md:w-40 h-[110px] md:h-40 border-4 border-blue-450 md:mb-8 md:ml-5 mb-0 ml-0 ">
+              <img className="relative rounded-full border-[2px] border-white p-0.5 md:w-[175px] md:h-[155px] w-[105px] h-[105px]" src={user[1]} />
               <button onClick={onOpenModal} className='w-fit rounded-full border-blue-500 bg-blue-500
                transition outline outline-0 p-1.5 absolute md:right-2 md:bottom-2 right-0 bottom-0'><AiFillCamera className='w-5 h-5 md:w-9 md:h-9 fill-white' /></button>
           </div>

@@ -5,7 +5,7 @@ import BannerInfluencerImage from "public/assets/img/upload_final.png";
 export default function BannerInfluencer({ influencer }: any) {
   console.log("TRAE ",influencer[0])
   let banner:string;
-  if(influencer[0]!='') banner=influencer[0]
+  if(influencer[0]) banner=influencer[0]
   else banner="https://myadultfan.com/assets/img/upload_final.png"
   console.log("Banner ",banner)
   function openModal(modalId: any) {

@@ -106,7 +106,8 @@ export default class Main extends React.Component {
 
       // If you want the image resized to the canvas size (also a HTMLCanvasElement)
       const canvasScaled = this.editor.getImageScaledToCanvas()
-      console.log(canvasScaled)
+      const dataURL = canvasScaled.toDataURL('image/jpeg', 1.0);//full quality
+      console.log("CAnvas",dataURL)
     }
   }
   render() {

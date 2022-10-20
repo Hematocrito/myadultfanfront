@@ -47,7 +47,7 @@ export default function FeedInfluencers() {
   useEffect(() => {  
     //Para que es esta sesión??
     let localSesion = localStorage.getItem('sesion')  
-    console.log("SESION FEED"+localSesion)
+    //console.log("SESION FEED"+localSesion)
     const fetchData = async () => {    
       let tk_code = localStorage.getItem('tkWomen')
       console.log("TOKEN "+tk_code);

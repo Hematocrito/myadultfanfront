@@ -105,8 +105,10 @@ export const BasicInfo = () => {
             newObject.avatar = details.data.avatar  
             newObject.cover = details.data.cover                              
             setPerfil(newObject) 
-            localStorage.setItem("vatarProfile", details.data.avatar)
+            localStorage.setItem("perCover", details.data.avatar)
             localStorage.setItem("userProfile", details.data.username)
+            localStorage.setItem("variable3", details.data.cover)
+            //localStorage.setItem("nomUsuario", usuario)
         }
         fetchData()
             // make sure to catch any error
@@ -135,12 +137,6 @@ export const BasicInfo = () => {
         intro = perfil.bio
     } 
 
-    function enviarData(){
-        console.log("USUARIO",usuario)    
-        localStorage.setItem("variable3", fondo)
-        localStorage.setItem("perCover", foto)
-        localStorage.setItem("nomUsuario", usuario)
-    }  
     let arreglo:any = [usuario, foto];
 
     const handleSubmit = async (event:any) => {
@@ -217,7 +213,7 @@ export const BasicInfo = () => {
                 <a className="text-black border-b-[3px] border-black font-semibold text-right">PROFILE SETTINGS</a>
 
                 <Link href='/admin/model/mydata/banking-settings' >
-                    <a className="text-blue-450 font-semibold hover:text-blue-450 transition duration-300 cursor-pointer" onClick={enviarData}>BANKING SETTINGS</a>
+                    <a className="text-blue-450 font-semibold hover:text-blue-450 transition duration-300 cursor-pointer" >BANKING SETTINGS</a>
                 </Link>
 
             </div>

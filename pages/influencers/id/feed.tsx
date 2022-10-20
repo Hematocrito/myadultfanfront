@@ -12,6 +12,7 @@ const FeedInfluencers = dynamic(
 )
 
 export default function Feed() {
+  console.log("feed.tsx")
   useEffect(() => {
     const body = document.body;
     body.style.overflow = 'auto';

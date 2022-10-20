@@ -7,6 +7,7 @@ import { authService } from "services";
 import React, { useState, useEffect } from 'react';
 
 export default function LayoutInfluencer({ children }: any) {
+  console.log("Layout")
   const user = authService.userValue;
 
   const [perfil, setPerfil] = useState<any>({})
