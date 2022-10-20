@@ -4,7 +4,7 @@ import AvatarEditor from "react-avatar-editor";
 export default class Main extends React.Component {
   
   state = {
-    image: localStorage.getItem("variable2"),
+    image: localStorage.getItem("perCover"),
     allowZoomOut: false,
     position: { x: 0.5, y: 0.5 },
     scale: -1,

@@ -13,12 +13,12 @@ module.exports = {
   },
   images: {
     domains: [
+      "myadultfan.com",
       "randomuser.me",
       "i.imgur.com",
       "upload.wikimedia.org",
       "restcountries.eu",
       "flagcdn.com",
-      "myadultfan.destinysoftware.com.co",
       "myadultfan.s3.amazonaws.com",
       "my-adult-fan-dev.s3.amazonaws.com"
     ],

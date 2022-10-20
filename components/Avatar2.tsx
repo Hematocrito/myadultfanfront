@@ -8,8 +8,7 @@ import { AiFillCamera } from 'react-icons/ai';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/router";
 
-const Avatar1 = ({ user }: any) => {
-  console.log("@@@@@@", user[1])
+const Avatar2 = () => {
   const router = useRouter()
   const [open, setOpen] = useState(false);
 
@@ -24,6 +23,12 @@ const Avatar1 = ({ user }: any) => {
     /*let avatarWomen:any = localStorage.getItem('newImage')        
     if(avatarWomen) setFoto(avatarWomen)*/
     
+    let imgAvatar = localStorage.getItem('perCover') 
+    
+    if(imgAvatar!=null) setAvatar(imgAvatar)
+    let nomUsr = localStorage.getItem('nomUsuario') 
+    console.log("!!!!!!!",nomUsr)
+    if(nomUsr!=null) setUsername(nomUsr)
   }, [])
 
   function guardar(){
@@ -39,11 +44,11 @@ const Avatar1 = ({ user }: any) => {
     <div>
       <div className='flex items-center sm:gap-3 gap-2 ' >                            
           <div className="relative rounded-full w-[112px]  md:w-40 h-[112px] lg:w-[179px] lg:h-[179px] md:h-40 border-4 border-blue-450 md:mb-8 md:ml-5 mb-0 ml-0 ">
-              <img className="relative border-[2px] border-white rounded-full p-0.5 lg:w-[170px] lg:h-[170px] md:w-[175px] md:h-[155px] w-56 h-49" src={user[1]} />
+              <img className="relative border-[2px] border-white rounded-full p-0.5 lg:w-[170px] lg:h-[170px] md:w-[175px] md:h-[155px] w-56 h-49" src={avatar} />
               <button onClick={onOpenModal} className='w-fit rounded-full border-blue-500 bg-blue-500
                transition outline outline-0 p-1.5 absolute md:right-2 md:bottom-2 right-0 bottom-0'><AiFillCamera className='w-5 h-5 md:w-9 md:h-9 fill-white' /></button>
           </div>
-          <span className='font-bold sm:text-3xl text-white text-xl'>{user[0]}</span>
+          <span className='font-bold sm:text-3xl text-white text-xl'>{username}</span>
       </div>
       <Modal open={open} onClose={onCloseModal} center>
         <h2 className='myriad text-xl font-semibold'>Edit avatar image</h2>
@@ -58,4 +63,4 @@ const Avatar1 = ({ user }: any) => {
   );
 };
 
-export default Avatar1
+export default Avatar2

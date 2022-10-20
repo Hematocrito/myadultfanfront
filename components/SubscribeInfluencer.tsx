@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Image from 'next/image';
 import Model from 'public/post/post1.jpg';
 
-export default function SubscribeInfluencer() {
+export default function SubscribeInfluencer({ biografia }: any) {
 
   const router = useRouter();
   let txtSub1,txtSub2,txtSub3,txtSub4,texto5;
@@ -57,14 +57,12 @@ export default function SubscribeInfluencer() {
       </div>  
       <div className="w-full md:w-4/5">
         <p className="text-md my-4 mx-2 md:mx-10">
-          Hi guys its me bratty luna. Welcome to my private stories. Join me
-          and see my naughty stories that are too hot for my public. Feel free
-          to chat and send me photos, daily posts. No screenshots or
-          screenrecordings pls! These are just for us (will be deleted){' '}
+          {biografia}
+          {/*(will be deleted){' '}
           <span className="font-semibold">
             PLEASE ALLOW 24 HOURS TO BE ADDED
           </span><br />
-          THANK YOUs
+          THANK YOUs*/}
         </p>
       </div>
       

@@ -10,6 +10,7 @@ import Ventana from './Ventana';
 import { useEffect, useState } from 'react';
 import NavbarMod from './NavbarMod';
 import Avatar1 from './Avatar1';
+import Avatar2 from './Avatar2';
 
 export const BasicInfo = () => {
   const router = useRouter();
@@ -45,7 +46,7 @@ export const BasicInfo = () => {
             <NavbarMod />              
                 <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${cover})`}}>
                     <div className='mt-40 ml-5'>
-                    <Avatar1 />
+                    <Avatar2 />
                     </div>
                         
                     <div className='mt-10 mr-10'>

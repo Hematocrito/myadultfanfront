@@ -15,7 +15,8 @@ import { BaseEmoji, Picker } from "emoji-mart";
 import "emoji-mart/css/emoji-mart.css";
 import NavbarMod from './NavbarMod';
 import Avatar1 from './Avatar1';
-
+import Router from "next/router";
+import { string } from 'yup';
 
 function ventana() {
     let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,
@@ -90,14 +91,22 @@ export const BasicInfo = () => {
             newObject.firstName = details.data.firstName
             newObject.lastName = details.data.lastName  
             newObject.username = details.data.username
-            newObject.email = details.data.email
             newObject.gender = details.data.gender 
-            newObject.status = details.data.status 
+            newObject.email = details.data.email
+            newObject.status = details.data.status
+            newObject.city = details.data.city
+            newObject.zipcode = details.data.zipcode
+            newObject.address = details.data.address
+            newObject.height = details.data.height
+            newObject.weight = details.data.weight
+            newObject.bio = details.data.bio
+            newObject.eyes = details.data.eyes
+            newObject.sexualPreference = details.data.sexualPreference            
             newObject.avatar = details.data.avatar  
             newObject.cover = details.data.cover                              
             setPerfil(newObject) 
-            localStorage.setItem("variable2", details.data.avatar)
-            localStorage.setItem("variable3", details.data.cover)
+            localStorage.setItem("vatarProfile", details.data.avatar)
+            localStorage.setItem("userProfile", details.data.username)
         }
         fetchData()
             // make sure to catch any error
@@ -105,30 +114,98 @@ export const BasicInfo = () => {
         
     }, [])
 
-    let firstName, email, lastName, gender, statusInf, foto, fondo;
-    let usuario:any
+    let firstName, email, lastName, gender, status, foto:any, fondo:any;
+    let usuario:any, city, intro, sexPref, dir, postal, altura, peso, color;
     if(perfil!==null){
+        foto = perfil.avatar
+        fondo = perfil.cover
         firstName = perfil.firstName
         lastName = perfil.lastName
-        console.log("LOco de la cabeza "+perfil.status) 
         usuario = perfil.username
         email = perfil.email  
         gender = perfil.gender
-        statusInf = perfil.status
-        foto = perfil.avatar
-        fondo = perfil.cover
+        status = perfil.status
+        city = perfil.city
+        dir = perfil.address
+        postal = perfil.zipcode
+        altura = perfil.height
+        peso = perfil.weight
+        color = perfil.eyes
+        sexPref = perfil.sexualPreference
+        intro = perfil.bio
     } 
-    
+
     function enviarData(){
-        localStorage.setItem("variable1", usuario)
+        console.log("USUARIO",usuario)    
+        localStorage.setItem("variable3", fondo)
+        localStorage.setItem("perCover", foto)
+        localStorage.setItem("nomUsuario", usuario)
+    }  
+    let arreglo:any = [usuario, foto];
+
+    const handleSubmit = async (event:any) => {
+        event.preventDefault()
+        let tk_code = localStorage.getItem('tkWomen')
+        console.log("TOKEN "+tk_code);
+        let token:any = tk_code? tk_code: ''
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", token);
+        myHeaders.append("Content-Type", "application/json");
+        
+        let editor = []
+        event.target.name.value ? editor[0]=event.target.name.value : editor[0]=perfil.firstName
+        event.target.lname.value? editor[1]=event.target.lname.value : editor[1]=perfil.lastName
+        event.target.username.value? editor[2]=event.target.username.value : editor[2]=perfil.username
+        event.target.mail.value ? editor[3]=event.target.mail.value : editor[3]=perfil.email
+        event.target.statusInf.value ? editor[4]=event.target.statusInf.value : editor[4]=perfil.status
+        event.target.city.value ? editor[5]=event.target.city.value : editor[5]=perfil.city
+        event.target.address.value ? editor[6]=event.target.address.value : editor[6]=perfil.address
+        event.target.zipcode.value ? editor[7]=event.target.zipcode.value : editor[7]=perfil.zipcode
+        event.target.height.value ? editor[8]=event.target.height.value : editor[8]=perfil.height
+        event.target.weight.value ? editor[9]=event.target.weight.value : editor[9]=perfil.weight
+        event.target.eyes.value ? editor[10]=event.target.eyes.value : editor[10]=perfil.eyes
+        event.target.gender.value ? editor[11]=event.target.gender.value : editor[11]=perfil.gender
+        event.target.preference.value ? editor[12]=event.target.preference.value : editor[12]=perfil.sexualPreference
+        event.target.bio.value ? editor[13]=event.target.bio.value : editor[13]=perfil.bio
+        
+        var raw = JSON.stringify({
+        "firstName": editor[0],
+        "lastName": editor[1],
+        "username": editor[2],
+        "email": editor[3],   
+        "country": "Argentina",
+        "status": editor[4],
+        "city": editor[5],
+        "address": editor[6],
+        "zipcode": editor[7],
+        "height": editor[8],
+        "weight":editor[9],
+        "eyes": editor[10],
+        "gender": editor[11],
+        "sexualPreference": editor[12],
+        "bio": editor[13]
+        });
+
+        var options:RequestInit = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+
+        fetch("https://api.myadultfan.com/performers", options)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+        alert("Record saved!")
     }
-  
+    
     return (
         <section >
             <NavbarMod />
              <div className="flex justify-between img-cover lg:w-full w-full h-64 lg:h-[70vh] bg-local md:bg-cover md:bg-top bg-contain bg-center" style={{backgroundImage: `url(${fondo})`}}>
                     <div className='ml-5 cont-avatar'>
-                    <Avatar1 />
+                    <Avatar1 user={arreglo} />
                     </div>
                         
                     <div className='mt-10 mr-10'>
@@ -146,7 +223,7 @@ export const BasicInfo = () => {
             </div>
 
             <div className="flex m-8 md:m-12">
-                <form className="bg-white rounded w-full">
+                <form onSubmit={handleSubmit} className="bg-white rounded w-full">
                     <div className="lg:w-1/2 md:w-full m-auto">
                         <div className="mb-6 lg:mb-7 grid grid-cols-1 md:grid-cols-2 gap-7">
                             <div>
@@ -156,7 +233,7 @@ export const BasicInfo = () => {
                                         First Name
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" value={firstName}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none " id="name" type="text" placeholder={firstName}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
@@ -165,7 +242,7 @@ export const BasicInfo = () => {
                                         Last Name
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="lname" type="text" value={lastName}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="lname" type="text" placeholder={lastName}></input>
                             </div>
                         </div>
                         <div className="mb-6 lg:mb-7 grid grid-cols-1 md:grid-cols-2 gap-7">
@@ -176,16 +253,16 @@ export const BasicInfo = () => {
                                         Username
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="text" type="text" value={usuario}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder={usuario}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
                                     <AiFillStar className='w-3 h-3 text-orange-500' />
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="mail">
                                         Email
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" value={email}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="mail" type="text" placeholder={email}></input>
                             </div>
                             <div>
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -199,63 +276,63 @@ export const BasicInfo = () => {
                                         Status
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="statusInf" type="text" value={statusInf}></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="statusInf" type="text" value={status}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
                                         City
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="City"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="city" type="text" placeholder={city}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
-                                        Adress
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+                                        Address
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Adress"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="address" type="text" placeholder={dir}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zipcode">
                                         Postal code
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Postal code"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="zipcode" type="text" placeholder={postal}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="height">
                                         Height
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Height"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="height" type="text" placeholder={altura}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="weight">
                                         Weight
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Weight"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="weight" type="text" placeholder={peso}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="eyes">
                                         Eyes color
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Eyes"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="eyes" type="text" placeholder={color}></input>
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="gender">
                                         Gender
                                     </label>
                                 </div>
-                                <select className='select select-info border border-gray-400 rounded bg-white w-full py-2 px-3 shadow' defaultValue={'female'}>
+                                <select id='gender' className='select select-info border border-gray-400 rounded bg-white w-full py-2 px-3 shadow' placeholder={gender}>
                                     <option className="text-sm" value={'male'}>Male</option>
                                     <option className="text-sm" value={'female'}>Female</option>
                                     <option className="text-sm" value={'transgender'}>Trans</option>
@@ -263,15 +340,15 @@ export const BasicInfo = () => {
                             </div>
                             <div>
                                 <div className='flex gap-1'>
-                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="preference">
                                         Sexual preference
                                     </label>
                                 </div>
-                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="Sexual preference"></input>
+                                <input className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="preference" type="text" placeholder={sexPref}></input>
                             </div>
                         </div>
                         <div className='mb-7'>
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="bio">
                                 Bio 
                             </label>
                           
@@ -282,7 +359,7 @@ export const BasicInfo = () => {
                                     </div>
                                 </div>
                             )}
-                            <textarea rows={5}  value={input} onChange={(e) => setInput(e.target.value)} className='border w-full border-gray-400 rounded' placeholder='Tell people something about you'>
+                            <textarea id='bio' rows={5}  value={input} onChange={(e) => setInput(e.target.value)} className='border w-full border-gray-400 rounded' placeholder={intro} >
                             </textarea>
                             <p style={{ cursor: 'pointer' }} onClick={() => {
                                 setShowEmojis(!showEmojis);
@@ -329,7 +406,7 @@ export const BasicInfo = () => {
                         </div>
 
                         <div className="flex items-center justify-center">
-                            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-80" type="button">
+                            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-80" type="submit">
                                 Save Changes
                             </button>
                         </div>

@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import { useRouter } from "next/router";
-
+import BannerInfluencerImage from "public/assets/img/upload_final.png";
 
 export default function BannerInfluencer({ influencer }: any) {
+  console.log("TRAE ",influencer[0])
+  let banner:string;
+  if(influencer[0]!='') banner=influencer[0]
+  else banner="https://myadultfan.com/assets/img/upload_final.png"
+  console.log("Banner ",banner)
   function openModal(modalId: any) {
     let modal: any = document.getElementById(modalId);
     modal.classList.remove('hidden');
@@ -43,7 +48,7 @@ export default function BannerInfluencer({ influencer }: any) {
 
   return (
     <div className="relative h-56 lg:h-[70vh] mx-0 md:mx-[12%] mt-1 bg-gray-300">
-      <Image src={influencer} layout="fill" className="object-fill" />
+      <Image src={banner} layout="fill" className="object-fill" />
       <div className="absolute w-full top-1">
         <div className="flex justify-around">
           <div className="text-white flex flex-col text-center">
@@ -69,7 +74,7 @@ export default function BannerInfluencer({ influencer }: any) {
         <div className="flex flex-col justify-start w-full text-white px-3">
           {/* <div className="text-white flex  text-start"> */}
           <div className="inline-flex online -mb-3 md:-mb-1">
-              <p className='tracking-tighter font-extrabold text-2xl md:text-4xl'>LUCYBLACK18</p>  
+              <p className='tracking-tighter font-extrabold text-2xl md:text-4xl'>{influencer[1]}</p>  
               <svg height="50" width="20" className='mx-1'><circle cx="10" cy="16" r="7" className='fill-maf-pink'/></svg>
               <p className='text-base md:text-lg font-medium mt-2'>LIVE</p>
           </div>
