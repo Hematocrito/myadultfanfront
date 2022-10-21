@@ -65,13 +65,14 @@ export const BasicInfo = () => {
     };
 
     const [perfil, setPerfil] = useState<any>({})
+    const [token, setToken] = useState<any>({})
     
     useEffect(() => {  
         const fetchData = async () => {  
             
             let tk_code = localStorage.getItem('tkWomen')
             console.log("TOKEN "+tk_code);
-            let token:any = tk_code? tk_code: ''
+            tk_code? setToken(tk_code) : setToken('')
             var myHeaders = new Headers();
             myHeaders.append("Authorization", token);
             myHeaders.append("Cookie", "connect.sid=s%3ARXgmaXuczqJjqr1AOJwMZgzzG1e1ICgA.BP5u1GbXbWXaL4Nvmvb3kk%2BrEBiJbpux3pXNdpdsFg4");
@@ -137,13 +138,44 @@ export const BasicInfo = () => {
         intro = perfil.bio
     } 
 
+    const [file1, setFile1] = useState('');
+
+    const onChange = (event:any) => {
+        const value = event.target.value;
+
+        const f1 = event.target.files[0];
+        setFile1(f1);
+        console.log("!!!!!!!! "+f1)
+    }
+
+    const guardarVideo = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", token);
+
+        var formdata = new FormData();
+        formdata.append("welcome-video", file1, "[PROXY]");
+
+
+        const endpoint = 'https://api.myadultfan.com/performers/welcome-video/upload';
+
+        var requestOptions:RequestInit = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+          };
+
+        const response = await fetch(endpoint, requestOptions)
+        const result = await response.text()
+ 
+        console.log("!!!!!!!!!!! "+ result);  
+    }
+
     let arreglo:any = [usuario, foto];
 
     const handleSubmit = async (event:any) => {
         event.preventDefault()
-        let tk_code = localStorage.getItem('tkWomen')
-        console.log("TOKEN "+tk_code);
-        let token:any = tk_code? tk_code: ''
+        
         var myHeaders = new Headers();
         myHeaders.append("Authorization", token);
         myHeaders.append("Content-Type", "application/json");
@@ -384,17 +416,22 @@ export const BasicInfo = () => {
                             />
                           </svg></p>
                         </div>
-                        <div className='mb-7'>
-                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="">
+                        <div className='mb-7 border-2'>
+                            <label className="block text-gray-700 text-sm pt-3 ml-3 font-bold mb-2" htmlFor="">
                                 Welcome Video
                             </label>
-                            <button className='border border-gray-400 rounded py-2 px-7 text-gray-700'
+                            <button className='border border-gray-400 rounded py-2 ml-3 px-7 text-gray-700'
                                 onClick={handleClick}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                 </svg> Select File
                             </button>
-                            <input style={{ display: 'none' }} ref={inputRef} type="file" />
+                            <input style={{ display: 'none' }} ref={inputRef} type="file" onChange={onChange} />
+                            <button className='bg-orange-300 text-white font-bold ml-3 mb-5 py-2 px-4 rounded focus:outline-none focus:shadow-outline' onClick={() => {
+                               guardarVideo();
+                            }}>
+                                Save video
+                            </button>
                         </div>
                         <div className='mb-7'>
                             <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
