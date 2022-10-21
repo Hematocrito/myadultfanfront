@@ -11,7 +11,7 @@ const PreviewProfileCard = ({  model }: any) => {
   return (
     <div className="w-full justify-self-center text-center">
       <div
-        className="mb-10 relative h-36 sm:h-60"
+        className="mb-10 relative h-24 sm:h-60"
         style={{
           backgroundImage: `url(
             ${cover}

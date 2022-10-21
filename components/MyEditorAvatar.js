@@ -99,15 +99,20 @@ export default class Main extends React.Component {
   };
 
   onClickSave = () => {
+    
     if (this.editor) {
       // This returns a HTMLCanvasElement, it can be made into a data URL or a blob,
       // drawn on another canvas, or added to the DOM.
-      const canvas = this.editor.getImage()
+      //const canvas = this.editor.getImage()
 
       // If you want the image resized to the canvas size (also a HTMLCanvasElement)
-      const canvasScaled = this.editor.getImageScaledToCanvas()
-      const dataURL = canvasScaled.toDataURL('image/jpeg', 1.0);//full quality
-      console.log("CAnvas",dataURL)
+      const canvasScaled = this.editor.getImageScaledToCanvas().toDataURL();
+      //const canvas = this.editor.getImage().toDataURL();
+  /*    let imageURL;
+      fetch(canvas)
+        .then(res => res.blob())
+        .then(blob => (imageURL = window.URL.createObjectURL(blob)));      
+      console.log("CAnvas",imageURL)*/
     }
   }
   render() {
